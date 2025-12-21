@@ -1,4 +1,7 @@
 # Compiled files
+# Compiled executables
+lesson[0-9]*
+!lesson[0-9]*.cpp
 *.o
 *.out
 *.exe
