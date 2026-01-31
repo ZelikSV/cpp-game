@@ -70,7 +70,40 @@ int main() {
       } else {
         cout << "Ти не можеш нічого купувати або продавати." << endl;
       }
+
+      if(money > 50 && rand() % 6 + 1 == 1) {
+        cout << "Розбійники грабують караван!" << endl;
+        int demant = money * 0.4;
+        int choice;
+
+        cout<<"Розбійники вимагають "<<demant<<" динарів"<<endl;
+
+        cout<<"1 - Заплатити розбійникам"<<endl;
+        cout<<"2 - Битися 3 розбійниками"<<endl;
+
+         cin >> choice;
+
+         if (choice == 1) {
+          money -= demant;
+         } else if (choice == 2) {
+          int fight = rand() % 100;
+          if (fight < 40) {
+            cout<<"Ти переміг розбійників!"<<endl;
+          } else if (fight < 80) {
+            cout<<"Ти програв битву!"<<endl;
+            demant *=1.5;
+            cout<<"Розбійники забрали "<<demant<<" динарів"<<endl;
+            money -= demant;
+         } else {
+            cout<<"Фатальна поразка! Гру закінчено!"<<endl;
+            break;
+         }
+         }
+      }
     }
+
+    cout<<"Ти пройшов "<<oasis<<" оаз."<<endl;
+    cout<<"Ти заробив "<<money<<" динарів."<<endl;
 
     return 0;
 }
