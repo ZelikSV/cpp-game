@@ -47,11 +47,29 @@ int main() {
       cout << "Введи кількість:";
       cin >> amount;
 
-      int cost = amount * price;
+      if (amount > 0) {
+         int cost = amount * price;
 
-      // money = money - cost;
-      money -= cost;
-      food += amount;
+         if (money >= cost) {
+           // money = money - cost;
+            money -= cost;
+            food += amount;
+         } else {
+            cout << "Ти не маєш достатньо грошей." << endl;
+         }
+      } else if (amount < 0) {
+        int sellAmount = -amount;
+        int cost = amount * price;
+
+        if (food >= -sellAmount) {
+          food -= sellAmount;
+          money += cost;
+        } else {
+          cout << "Ти не маєш достатньо зерна." << endl;
+        }
+      } else {
+        cout << "Ти не можеш нічого купувати або продавати." << endl;
+      }
     }
 
     return 0;
